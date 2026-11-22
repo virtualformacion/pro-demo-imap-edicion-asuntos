@@ -22,7 +22,7 @@
   const b=el('saveMailbox');b.disabled=true;
   try{message('Validando y guardando el buzón...');const id=el('mailboxId').value;
    await api(id?'edit':'create',{...(id?{id}:{}),name:el('mailboxName').value,email:el('mailboxEmail').value,appPassword:el('mailboxPassword').value,folder:el('mailboxFolder').value,active:el('mailboxActive').checked});
-   reset();await window.loadMailboxes();message('Buzón guardado en GitHub. Está disponible para las consultas nuevas.');
+   reset();await window.loadMailboxes();message('Buzón guardado. Está disponible para las consultas nuevas.');
   }catch(e){message(e.message);}finally{b.disabled=false;}
  };
  el('refreshMailboxes').onclick=()=>window.loadMailboxes();el('cancelMailboxEdit').onclick=()=>{reset();message('Edición cancelada');};
